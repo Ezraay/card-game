@@ -81,5 +81,10 @@ namespace CardGame.Battle
                 AttackingUnit = null;
             }
         }
+
+        public int Damage(BattleContext context)
+        {
+            return context.Enemy.guardSlot.Guard() <= Power ? Critical : 0;
+        }
     }
 } 

@@ -34,6 +34,15 @@ namespace CardGame.Battle
                         Phase += 1;
 
                     break;
+                case Phase.BattleDamage:
+                    for (int i = 0; i < Attack.Damage(context); i++)
+                    {
+                        context.Enemy.TakeDamage();
+                    }
+
+                    Phase += 1;
+                    AdvancePhase(context);
+                    break;
                 case Phase.BattleEnd:
                     Phase = Phase.BattleStart;
                     Attack.PostPhase();

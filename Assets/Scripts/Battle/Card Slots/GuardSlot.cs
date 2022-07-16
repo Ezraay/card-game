@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Events;
 
 namespace CardGame.Battle.Card_Slots
@@ -32,6 +33,11 @@ namespace CardGame.Battle.Card_Slots
         {
             Cards.Remove(card);
             OnGuardRemoved.Invoke(card);
+        }
+
+        public int Guard()
+        {
+            return Cards.Sum(card => card.Guard);
         }
     }
 }

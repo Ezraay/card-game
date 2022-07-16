@@ -27,7 +27,7 @@ namespace CardGame.Battle.Card_Slots
 
         public override void AddCard(BattleContext context, Card card)
         {
-            if (Card != null) context.Hero.graveyard.AddCard(context, card);
+            if (Card != null) context.Hero.graveyard.AddCard(context, Card);
 
             Card = card;
             OnChangeCard.Invoke(card);

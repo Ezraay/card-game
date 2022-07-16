@@ -29,6 +29,8 @@ namespace CardGame.Battle
             DrawCard();
             DrawCard();
             DrawCard();
+            DrawCard();
+            DrawCard();
         }
 
         private List<T> Shuffle<T>(List<T> target)
@@ -63,6 +65,12 @@ namespace CardGame.Battle
             _deckPile.RemoveAt(_deckPile.Count - 1);
 
             return card;
+        }
+
+        public void TakeDamage()
+        {
+            Card card = DrawCard();
+            damageSlot.AddCard(card);
         }
     }
 }

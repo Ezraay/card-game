@@ -12,11 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2b34359fdb4c9a9f042be20481b25d, type: 3}
   m_Name: Starter Deck
   m_EditorClassIdentifier: 
-  <Champion>k__BackingField: {fileID: 11400000, guid: ef504a54486f86f4bb6239476ed43185, type: 2}
+  <Champion>k__BackingField: {fileID: 11400000, guid: 47c988b326a1d6746afef8cdfa731358, type: 2}
   <DeckItems>k__BackingField:
   - count: 4
-    cardData: {fileID: 11400000, guid: 645c8c57b2cdc8f4f9af3c09dca37640, type: 2}
-  - count: 3
+    cardData: {fileID: 11400000, guid: 9d21c7602c97719488f13990dcbc2728, type: 2}
+  - count: 4
     cardData: {fileID: 11400000, guid: ef504a54486f86f4bb6239476ed43185, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: ce29d2f838e51de4e97e705edf8eb820, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: e47d7d47ce95f834a8b67088c7fcb2dd, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: 64e1a7265fba5e24bafb328eeb6263af, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: 0892abd1974b4b442b149f4ccb981a03, type: 2}
   - count: 2
+    cardData: {fileID: 11400000, guid: cc3cafed04a37594880920df52dbe8e6, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: 645c8c57b2cdc8f4f9af3c09dca37640, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: 140ab7555715c53419138155255dc4d6, type: 2}
+  - count: 3
+    cardData: {fileID: 11400000, guid: 5a8cf51bb95c9a94a92d4750c516551d, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: bb0a62938f4da164d9af421e64aa5e40, type: 2}
+  - count: 1
     cardData: {fileID: 11400000, guid: a74591dd08c5a2543ac2208b83eb83d2, type: 2}
+  - count: 1
+    cardData: {fileID: 11400000, guid: d2138b748585654449c60c651c19c1d1, type: 2}
+  - count: 2
+    cardData: {fileID: 11400000, guid: ccca0dbd0b1efff4889b0ec01dc6d44e, type: 2}
+  - count: 4
+    cardData: {fileID: 11400000, guid: 10f3f0ccb834cbb46b888fc645c1e1b0, type: 2}

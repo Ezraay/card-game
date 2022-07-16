@@ -10,13 +10,13 @@ namespace CardGame.Battle.Card_Slots
         public readonly UnityEvent<Card> OnDamageAdded = new UnityEvent<Card>();
         public readonly UnityEvent<Card> OnDamageRemoved = new UnityEvent<Card>();
 
-        public override void AddCard(BattleContext context, Card card)
+        public void AddCard(Card card)
         {
             Cards.Add(new Damage(card));
             OnDamageAdded.Invoke(card);
         }
 
-        public override void RemoveCard(BattleContext context, Card card)
+        public void RemoveCard(Card card)
         {
             foreach (var damage in Cards)
                 if (damage.card == card)
