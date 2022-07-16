@@ -7,7 +7,16 @@ namespace CardGame.Battle.Card_Slots
         public readonly UnityEvent<Card> OnChangeCard = new UnityEvent<Card>();
         public readonly UnityEvent OnToggle = new UnityEvent();
         public Card Card { get; protected set; }
-        public bool Exhausted { get; private set; }
+        public bool Set { get; private set; }
+        public readonly UnitColumn Column;
+        public readonly UnitRow Row;
+        public bool Attacked;
+
+        public UnitSlot(UnitColumn column, UnitRow row)
+        {
+            Column = column;
+            Row = row;
+        }
 
         public override bool CanAddCard(BattleContext context, Card card)
         {
@@ -24,20 +33,24 @@ namespace CardGame.Battle.Card_Slots
             OnChangeCard.Invoke(card);
         }
 
-        public bool CanSet(BattleContext context)
+        public bool CanChangeStance(BattleContext context)
         {
             return context.State.Phase == Phase.BattleStart &&
-                   context.HeroTurn();
+                   context.HeroTurn() && 
+                   context.State.Attack.CanAddUnit(this) && 
+                   !Attacked;
         }
 
-        public void Stand()
+        public void StandSlot()
         {
-            Exhausted = false;
+            Set = false;
+            OnToggle.Invoke();
+            Attacked = false;
         }
 
-        public void Toggle()
+        public void SetSlot()
         {
-            Exhausted = !Exhausted;
+            Set = true;
             OnToggle.Invoke();
         }
     }

@@ -4,7 +4,7 @@ namespace CardGame.Battle.Card_Slots
 {
     public class ChampionSlot : UnitSlot
     {
-        public ChampionSlot(Card card)
+        public ChampionSlot(Card card) : base(UnitColumn.Champion, UnitRow.Front)
         {
             Card = card;
         }

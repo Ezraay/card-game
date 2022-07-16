@@ -10,6 +10,7 @@ namespace CardGame
         [SerializeField] private LayerMask cardDisplayMask;
         [SerializeField] private LayerMask cardSlotMask;
         [SerializeField] private BattleManager battleManager;
+        [SerializeField] private BattleDisplay battleDisplay;
         [SerializeField] private float clickThreshold = 0.1f;
         private Vector3? _clickPosition;
         private bool _dragging;
@@ -26,7 +27,17 @@ namespace CardGame
             {
                 if (_hoveredCard != null)
                     _hoveredCard.OnUnhover();
-                currentCard?.OnHover();
+                if (currentCard != null)
+                {
+                    currentCard.OnHover();
+                    if (currentCard.Card != null)
+                        battleDisplay.ShowCardInfo(currentCard.Card);
+                }
+                else
+                {
+                    battleDisplay.HideCardInfo();
+                }
+
                 _hoveredCard = currentCard;
             }
 

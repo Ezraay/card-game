@@ -38,15 +38,16 @@ namespace CardGame.Battle
             });
             GameState.OnStateChanged.AddListener(() =>
             {
+                BattleContext context = GetContext(heroTurn);
                 switch (GameState.Phase)
                 {
                     case Phase.Draw:
                         GameState.Player.DrawCard();
-                        GameState.AdvancePhase();
+                        GameState.AdvancePhase(context);
                         break;
                     case Phase.Stand:
                         GameState.Player.StandAll();
-                        GameState.AdvancePhase();
+                        GameState.AdvancePhase(context);
                         break;
                 }
             });
@@ -56,14 +57,14 @@ namespace CardGame.Battle
             heroBoard.Setup(Hero);
             enemyBoard.Setup(Enemy);
 
-            Hero.championSlot.OnChangeCard.AddListener(card => GameState.AdvancePhase());
-            Enemy.championSlot.OnChangeCard.AddListener(card => GameState.AdvancePhase());
+            Hero.championSlot.OnChangeCard.AddListener(AscendHandler);
+            Enemy.championSlot.OnChangeCard.AddListener(AscendHandler);
         }
 
-        private void Update()
+        private void AscendHandler(Card card)
         {
-            // Testing purposes
-            Debug.Log(Hero.handSlot.Cards.Count);
+            BattleContext context = GetContext(heroTurn);
+            GameState.AdvancePhase(context);
         }
 
         private Player GetPlayer(bool hero)

@@ -9,16 +9,15 @@ namespace CardGame.Battle
     {
         private readonly List<CardData> _deckPile;
         public ChampionSlot championSlot;
-        public UnitSlot championSupport = new UnitSlot();
-
+        public UnitSlot championSupport = new UnitSlot(UnitColumn.Champion, UnitRow.Back);
         public DamageSlot damageSlot = new DamageSlot();
         public GraveyardSlot graveyard = new GraveyardSlot();
         public GuardSlot guardSlot = new GuardSlot();
         public HandSlot handSlot = new HandSlot();
-        public UnitSlot leftSupport = new UnitSlot();
-        public UnitSlot leftUnit = new UnitSlot();
-        public UnitSlot rightSupport = new UnitSlot();
-        public UnitSlot rightUnit = new UnitSlot();
+        public UnitSlot leftSupport = new UnitSlot(UnitColumn.Left, UnitRow.Back);
+        public UnitSlot leftUnit = new UnitSlot(UnitColumn.Left, UnitRow.Front);
+        public UnitSlot rightSupport = new UnitSlot(UnitColumn.Right, UnitRow.Back);
+        public UnitSlot rightUnit = new UnitSlot(UnitColumn.Right, UnitRow.Front);
 
         public Player(Deck deck)
         {
@@ -47,12 +46,12 @@ namespace CardGame.Battle
 
         public void StandAll()
         {
-            championSlot.Stand();
-            championSupport.Stand();
-            leftUnit.Stand();
-            leftSupport.Stand();
-            rightUnit.Stand();
-            rightSupport.Stand();
+            championSlot.StandSlot();
+            championSupport.StandSlot();
+            leftUnit.StandSlot();
+            leftSupport.StandSlot();
+            rightUnit.StandSlot();
+            rightSupport.StandSlot();
         }
 
         public Card DrawCard()

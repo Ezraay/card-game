@@ -50,7 +50,6 @@ namespace CardGame.Battle.Display.Slots
         public virtual void Click(BattleContext context)
         {
             OnClick.Invoke();
-            Debug.Log("Slot clicked");
         }
 
         public virtual void Setup(T slot)

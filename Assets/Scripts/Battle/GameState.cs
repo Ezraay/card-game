@@ -4,6 +4,7 @@ namespace CardGame.Battle
 {
     public class GameState
     {
+        public Attack Attack;
         public Phase Phase;
         public Player Player;
 
@@ -13,22 +14,39 @@ namespace CardGame.Battle
         public void SwitchTurn(Player player)
         {
             Player = player;
+            Attack = new Attack(Player);
         }
 
-        public void AdvancePhase()
+        public void AdvancePhase(BattleContext context)
         {
-            if (Phase == Phase.End)
+            switch (Phase)
             {
-                Phase = 0;
-                OnTurnEnd.Invoke();
-            }
-            else if (Phase == Phase.BattleEnd)
-            {
-                Phase = Phase.BattleStart;
-            }
-            else
-            {
-                Phase += 1;
+                case Phase.Main:
+                    Phase += 1;
+                    Attack = new Attack(Player);
+                    break;
+                case Phase.BattleStart:
+                    if (Attack.InvalidAttack())
+                        Attack.Undo(context);
+                    else if (!Attack.CanAttack())
+                        Phase = Phase.End;
+                    else
+                        Phase += 1;
+
+                    break;
+                case Phase.BattleEnd:
+                    Phase = Phase.BattleStart;
+                    Attack.PostPhase();
+                    Attack = new Attack(Player);
+                    break;
+                case Phase.End:
+                    Phase = 0;
+                    OnTurnEnd.Invoke();
+                    Attack = new Attack(Player);
+                    break;
+                default:
+                    Phase += 1;
+                    break;
             }
 
             OnStateChanged.Invoke();

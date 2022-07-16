@@ -71,7 +71,6 @@ namespace CardGame.Battle.Display
         public void Click(BattleContext context)
         {
             OnClick.Invoke(context);
-            Debug.Log("Card clicked");
         }
 
         public void Drag()
