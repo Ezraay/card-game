@@ -908,4 +908,4 @@ coverage*[.json, .xml, .info]
 # Windows Installer files from build outputs
 
 # JetBrains Rider
-
+.idea/
